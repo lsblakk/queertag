@@ -1,0 +1,23 @@
+/* Active class used as the "on" state across all themes
+-----------------------------------------------------------------------------------------------------------*/
+
+.ui-btn-active2 {
+	border: 1px solid 		#e47aaf;
+	background: 			#f4c9df;
+	font-weight: bold;
+	color: 					#fff;
+	cursor: pointer;
+	text-shadow: 0 -1px 1px #145072;
+	text-decoration: none;
+	background-image: -moz-linear-gradient(top, 
+							#f4c9df, 
+							#e47aaf);
+	background-image: -webkit-gradient(linear,left top,left bottom,
+		color-stop(0, 		#f4c9df),
+		color-stop(1, 		#e47aaf));
+  	-msfilter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#f4c9df', EndColorStr='#e47aaf')";
+  	outline: none;
+}
+.ui-btn-active a.ui-link-inherit {
+	color: 					#fff;
+}

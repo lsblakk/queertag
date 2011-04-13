@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>HTML5</title>
+<link rel="stylesheet" href="html5.css">
+
+<script src="http://maps.google.com/maps/api/js?sensor=false"></script>
+
+<style>
+     html { height: 100% }
+     body { height: 100%; margin: 0px; padding: 0px }
+     #map_canvas { height: 20% }
+</style>
+
+<script>
+
+    var start='';
+    var to='San Diego';
+    var map;
+    var directionsService;
+    var directionsRenderer;
+
+    function calcRouteFromHere() {
+        var request = { origin: start, destination: to, travelMode: google.maps.DirectionsTravelMode.DRIVING };
+
+        directionsService = new google.maps.DirectionsService()
+        directionsRenderer = new google.maps.DirectionsRenderer();
+        directionsRenderer.setMap(map);
+        directionsService.route(request, function (result, status) {
+            if (status == google.maps.DirectionsStatus.OK) {
+                directionsRenderer.setDirections(result);
+            } else {
+                console.log(status);
+            }
+        });
+   }
+
+    function updateLocation(position) {
+        //pass the position to the Google Map and center it
+        start = new google.maps.LatLng(parseFloat(position.coords.latitude), parseFloat(position.coords.longitude));
+
+         map.setCenter(start);
+         calcRouteFromHere();
+    }
+
+    onload = function () {
+        var latlng = new google.maps.LatLng(39.17222, -120.13778);
+        var myOptions = {
+            zoom: 8,
+            center: latlng,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+
+        map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+
+        if(navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(updateLocation);
+        }
+   };
+</script>
+
+</head>
+
+<body>
+<section style="width:100%; height:100%" >
+<div id="map_canvas" style="width:100%; height:100%"></div>
+</section>
+</body>
+</html>

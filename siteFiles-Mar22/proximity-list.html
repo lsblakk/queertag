@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="HandheldFriendly" content="true" />
+<meta name="viewport" content="width=device-width, height=device-height, user-scalable=no" />
+<title>People nearby</title>
+
+<script type="text/javascript" src="js/jquery-1.5.js"></script>
+<link type="text/css" rel="stylesheet" href="css/style.css" />
+<style>
+#people_box{
+	border:1px solid #333;
+	width:100%; 
+	
+	padding:5px;
+}
+
+#people_box p{
+	padding-left:5px;
+}
+#people_box ul{
+	padding:0;
+	margin:0;
+}
+#people_box li{
+	display:block;
+	border:1px solid #ccc;
+	width:76px;
+	/*height:86px;*/
+	float:left;
+	padding:0;
+	margin:5px;
+	text-align:center;
+
+}
+a.uname{
+	background-color:#333;
+	color:#eee;
+	display:block;
+	width: 76px;
+}
+</style>
+
+</head>
+<body onload="loadLoc()">
+	<div id="container">
+		<div id="header">
+			<img src="img/logo.gif" alt="Queertag!"/>
+			<ul>
+				<li id="home"><a href="proximity.html">Home</a></li>
+				<li id="hookups_on"><a href="proximity-list.html">Hookups</a></li>
+				<li id="hotspots"><a href="nearby-venues.html">Hotspots</a></li>
+			</ul>
+
+		</div>
+	<div id="people_box" style=""><img src="img/loading29.gif"/> loading...</div>
+</div><!-- /container -->	
+	<script type="text/javascript">
+
+	    function loadLoc(){
+		
+	        if(navigator.geolocation) {
+				navigator.geolocation.getCurrentPosition(updateLocation);		
+	        }
+	    }
+		function updateLocation(position) {
+			console.log('update location called');
+	        var latitude = position.coords.latitude;
+	        var longitude = position.coords.longitude;
+
+	        if (!latitude || !longitude) {
+	            return;
+	        }
+			$.ajax({
+			       type: "POST",
+			       url: "doProximity.php",
+			       data: "lat="+latitude+'&long='+longitude+'&list=1',
+			       success: function(msg){
+			         document.getElementById("people_box").innerHTML = msg;
+			       }
+			    });
+			
+		}
+	</script>
+</body>
+</html>

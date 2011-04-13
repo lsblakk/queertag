@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="HandheldFriendly" content="true" />
+<meta name="viewport" content="width=device-width, height=device-height, user-scalable=no" />
+<title>People nearby</title>
+
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.0a3/jquery.mobile-1.0a3.min.css" />
+<script type="text/javascript" src="js/jquery-1.5.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/mobile/1.0a3/jquery.mobile-1.0a3.min.js"></script>
+<!--<link type="text/css" rel="stylesheet" href="css/style.css" />-->
+
+
+<style>
+#people_box{
+	border:1px solid #333;
+	width:100%; 
+	
+	padding:5px;
+	background-color:#fff;
+}
+#people_box ul{
+	padding:0;
+	margin:0;
+}
+.ui-btn-active2 {
+	border: 1px solid 		#999;
+	background: 			#eee;
+	font-weight: bold;
+	color: 					#333;
+	cursor: pointer;
+	text-shadow: 0 -1px 1px #fff;
+	text-decoration: none;
+	background-image: -moz-linear-gradient(top, 
+							#eee, 
+							#999);
+	background-image: -webkit-gradient(linear,left top,left bottom,
+		color-stop(0, 		#eee),
+		color-stop(1, 		#999));
+  	-msfilter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#eee', EndColorStr='#999')";
+  	outline: none;
+}
+</style>
+
+</head>
+<body onload="loadLoc()">
+	<div id="container" data-role="page">
+		<div id="topbanner" style="background-color:#c06;width:100%;"><img src="img/logo.gif" alt="Queertag!"/></div>
+		<div id="header" data-role="header">
+			<div data-role="navbar" data-theme="a">
+				<ul>
+				<li><a href="proximity2.html" data-theme="a" rel="external">Home</a></li>
+				<li><a href="proximity-list2.html" data-theme="a" class="ui-btn-active2" rel="external">Hookups</a></li>
+				<li><a href="nearby-venues2.html" data-theme="a" rel="external">Hotspots</a></li>
+				</ul>
+			</div><!-- /navbar -->
+		</div>
+	<div id="people_box" style="" data-role="content"><img src="img/loading29.gif"/> loading...</div>
+</div><!-- /container -->	
+	<script type="text/javascript">
+
+	    function loadLoc(){
+		
+	        if(navigator.geolocation) {
+				navigator.geolocation.getCurrentPosition(updateLocation);		
+	        }
+	    }
+		function updateLocation(position) {
+			console.log('update location called');
+	        var latitude = position.coords.latitude;
+	        var longitude = position.coords.longitude;
+
+	        if (!latitude || !longitude) {
+	            return;
+	        }
+			$.ajax({
+			       type: "POST",
+			       url: "doProximity2.php",
+			       data: "lat="+latitude+'&long='+longitude+'&list=1',
+			       success: function(msg){
+			         document.getElementById("people_box").innerHTML = msg;
+			       }
+			    });
+			
+		}
+	</script>
+</body>
+</html>

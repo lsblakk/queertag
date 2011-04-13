@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="HandheldFriendly" content="true" />
+	<meta name="viewport" content="width=device-width, height=device-height, user-scalable=no" />	
+  	<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+	<title>Queertag</title>
+	
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.0a3/jquery.mobile-1.0a3.min.css" />
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.5.min.js"></script>
+	<script type="text/javascript" src="http://code.jquery.com/mobile/1.0a3/jquery.mobile-1.0a3.min.js"></script>
+	<style>
+	#profile_photo{
+		background-color:#333;
+		width:275px;
+		height:275px;
+		margin: 0 auto;
+	}
+	#profile_content{
+		margin: 10px auto;
+	}
+	#header{
+		/*background-image:none;
+		background-color:#C06;*/
+	}
+	</style>
+
+</head>
+<body>
+<div id="container" data-role="page">
+		<div id="header" data-role="header" data-backbtn="true" data-theme="b">
+					<h1>Queertag!</h1>
+				<!--
+				<a href="index.html" data-icon="delete">Cancel</a>
+			
+				a href="index.html" data-icon="check" data-theme="b">Save</a>
+				-->
+				
+			<div data-role="navbar" data-theme="a">
+				<ul>
+				<li><a href="proximity2.html" data-theme="a" rel="external" data-icon="home" data-iconpos="top">Home</a></li>
+				<li><a href="proximity-list2.html" data-theme="a" rel="external" data-icon="star" data-iconpos="top">Hookups</a></li>
+				<li><a href="nearby-venues2.html" data-theme="a" class="" rel="external" data-icon="search" data-iconpos="top">Hotspots</a></li>
+				</ul>
+			</div><!-- /navbar -->
+		</div> <!--/header-->
+		
+		<!-- ======CONTENT========= -->
+		<div id="content" data-role="content">
+			<p>All my content goes here</p>
+			<div id="profile_photo"></div>
+			<div id="profile_content">
+				<h2>HottieQueer</h2>
+				<p><strong>Gender</strong> Faggy tough boi</p>
+				<p><strong>Age</strong> 28</p>
+				<p><strong>Status</strong> Single</p>
+			</div>
+		</div> <!--/content-->
+		<!-- ====================== -->
+		<div data-role="footer" class="ui-bar" data-position="fixed" data-theme="c">
+			<a href="index.html" data-role="button" data-icon="arrow-r">Message</a>
+			<a href="index.html" data-role="button" data-icon="star">Favorite</a>
+			<a href="index.html" data-role="button" data-icon="plus">Friend</a>
+		</div>
+</div><!-- /container -->
+
+</body>
+</html>

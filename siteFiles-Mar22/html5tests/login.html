@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset=utf-8 />
+<meta name="viewport" content="width=620" />
+<title>Login</title>
+
+<script src="h5utils.js"></script>
+<script src="md5.js"></script>
+<script type="text/javascript" src="../js/jquery-1.5.js"></script>
+</head>
+<body>
+	
+<header>
+  <h1>Login</h1>
+</header>
+<div id = "status"></div>
+<p>Username<br/><input type="text" name="username" id="username"/></p>
+<p>Password<br/><input type="password" name="password" id="pw"/></p>
+<input type="submit" alt="Login" name="submit" value="Go" id="login_btn"/>
+
+
+
+<script>
+//alert($('#pw')); //jquery shortcut for getElementById
+
+addEvent(document.querySelector('#login_btn'), 'click', function () {
+	//go to db and verify pw/username combo
+	//send md5 to db?
+	var pw =document.getElementById('pw').value;
+	var username = document.getElementById('username').value;
+
+	$.ajax({
+       type: "POST",
+       url: "doLogin.php",
+       data: "u="+username+'&pw='+pw,
+       success: function(msg){
+         //alert( "Data Saved: " + msg );
+		var msg_parts = msg.split(',');
+		if (msg_parts[0] == 'valid'){
+			document.getElementById('status').innerHTML = 'You are logged in.';
+			localStorage.setItem('uid', msg_parts[1]);
+			localStorage.setItem('timestamp', (new Date()).getTime());
+		} else {
+			document.getElementById('status').innerHTML = msg;
+		}
+	  }
+	});
+});
+
+/*addEvent(document.querySelector('#clear'), 'click', function () {
+  localStorage.clear(); 
+});*/
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="HandheldFriendly" content="true" />
+	<meta name="viewport" content="width=device-width, height=device-height, user-scalable=no" />	
+  	<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+	<title>Queertag</title>
+	
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.0a3/jquery.mobile-1.0a3.min.css" />
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.5.min.js"></script>
+	<script type="text/javascript" src="http://code.jquery.com/mobile/1.0a3/jquery.mobile-1.0a3.min.js"></script>
+	<style>
+	#profile_photo{
+		background-color:#333;
+		width:275px;
+		height:275px;
+		margin: 0 auto;
+	}
+	#profile_content{
+		margin: 10px auto;
+	}
+	#header{
+		/*background-image:none;
+		background-color:#C06;*/
+	}
+	#header h1{
+		width:162px;
+		margin: 5px auto;
+	}
+	</style>
+
+</head>
+<body>
+<div id="container" data-role="page">
+		<div id="header" data-role="header" data-backbtn="true" data-theme="b">
+					<h1><img src="img/queertag_logo.png" alt="Queertag!"/></h1>
+				<!--
+				<a href="index.html" data-icon="delete">Cancel</a>
+			
+				a href="index.html" data-icon="check" data-theme="b">Save</a>
+				-->
+				
+			<div data-role="navbar" data-theme="a">
+				<ul>
+				<li><a href="proximity2.html" data-theme="a" rel="external" data-icon="home" data-iconpos="top">Home</a></li>
+				<li><a href="proximity-list2.html" data-theme="a" rel="external" data-icon="star" data-iconpos="top" class="ui-btn-active" >Hookups</a></li>
+				<li><a href="nearby-venues2.html" data-theme="a" class="" rel="external" data-icon="search" data-iconpos="top">Hotspots</a></li>
+				</ul>
+			</div><!-- /navbar -->
+		</div> <!--/header-->
+		
+		<!-- ======CONTENT========= -->
+		<div id="content" data-role="content">
+			<ul data-role="listview" data-theme="c" data-dividertheme="d">
+				<li data-role="list-divider">Favorites</li>
+				<li><a href="audi.html">Audrey</a></li>
+				<li><a href="bmw.html">Roscoe66</a></li>
+				
+				<li data-role="list-divider">Friends</li>
+				<li><a href="acura.html">Blaney</a></li>
+				<li><a href="audi.html">Oona</a></li>
+				<li><a href="bmw.html">HotQueer</a></li>
+				
+				<li data-role="list-divider">Everybody</li>
+				<li><a href="audi.html">NerdyBoi</a></li>
+				<li><a href="bmw.html">FemmeFace</a></li>
+				<li><a href="bmw.html">DogLvr69</a></li>
+				<li><a href="bmw.html">PrettyGirl</a></li>
+			</ul>
+		</div> <!--/content-->
+		<!-- ====================== -->
+		<!--<div data-role="footer" class="ui-bar" data-position="fixed" data-theme="c">
+			<a href="index.html" data-role="button" data-icon="arrow-r">Message</a>
+			<a href="index.html" data-role="button" data-icon="star">Favorite</a>
+			<a href="index.html" data-role="button" data-icon="plus">Friend</a> 
+		</div>-->
+</div><!-- /container -->
+
+</body>
+</html>
